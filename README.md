@@ -42,7 +42,13 @@ create fargate profile for EKS cluster
 --------------------------------------------------
 
 Create EKS cluster with eksctl command line tool
-1.
+1. installed eksctl in WSL
+2. created cluster in WSL, please see eksctl-create-cluster-cmd.txt
+
+--------------------------------------------------
+
+Deploy to EKS Cluster from Jenkins Pipeline
+1. 
 
 --------------------------------------------------
 
