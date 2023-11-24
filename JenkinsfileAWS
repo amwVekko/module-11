@@ -1,0 +1,30 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'building application'
+                // code here
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'testing application'
+                // code here
+            }
+        }
+
+        stage('Deploy') {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key_id')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key_id')
+            }
+            steps {
+                echo 'deploying application'
+                sh 'kubectl create deployment nginx-deployment --image=nginx'
+            }
+        }
+    }
+}
