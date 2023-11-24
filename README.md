@@ -48,7 +48,42 @@ Create EKS cluster with eksctl command line tool
 --------------------------------------------------
 
 Deploy to EKS Cluster from Jenkins Pipeline
-1. 
+1. installed kubectl, aws-iam-authenticator inside jenkins container
+2. copied config.yaml from gitlab, added cluster name, API server endpoint and certificate data
+3. copied config to docker container with docker cp
+4. created credentials in jenkins using secret text for AWS
+5. created jenkinsfile with AWS key ids and deployment sh command
+6. created new pipeline in jenkins and tested deployment
+7. checked for new created pod (kubectl get pods)
+8. removed API server endpoint and certificate data of cluster from config.yaml to be safe
+9. renamed jenkinsfile to JenkinsfileAWS
+
+--------------------------------------------------
+
+BONUS: Deploy to LKE Cluster from Jenkins Pipeline
+1. created new cluster on linode
+2. exported kubeconfig.yaml
+3. added credential with secret file, using the kubeconfig.yaml
+4. installed kubernetes CLI plugin.
+5. created new Jenkinsfile with "withKubeConfig"
+6. deployed to linode with jenkinsfile
+7. removed server endpoint from jenkinsfile to be safe
+8. renamed jenkinsfile to JekinsfileLKE
+
+--------------------------------------------------
+
+Complete CI/CD Pipeline with EKS and DockerHub
+1. cloned java-maven-app from gitlab
+2. in container: apt update && apt install gettext-base -y
+3. created docker-registry secret
+
+--------------------------------------------------
+
+Complete CI/CD Pipeline with EKS and ECR
+1. created private repo on AWS
+2. created "ecr-credentials" in jenkins
+3. created docker secret for AWS
+4. changed DOCKER_REPO_SERVER in Jenkinsfile
 
 --------------------------------------------------
 
